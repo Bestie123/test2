@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Универсальный редактор - Tech Knowledge Base</title>
+    
+    <!-- Toast UI Editor -->
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+    
+    <!-- Monaco Editor -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/editor/editor.main.css" />
+    
+    <!-- Editor.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest/dist/editor.css" />
+    
+    <!-- Наши стили -->
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/editor.css">
+</head>
+<body>
+    <div class="universal-editor">
+        <!-- Панель управления -->
+        <div class="editor-control-panel">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="markdown">
+                    <span class="icon">📝</span>
+                    <span class="label">Markdown</span>
+                </button>
+                <button class="mode-btn" data-mode="wysiwyg">
+                    <span class="icon">👁️</span>
+                    <span class="label">WYSIWYG</span>
+                </button>
+                <button class="mode-btn" data-mode="code">
+                    <span class="icon">💻</span>
+                    <span class="label">Code</span>
+                </button>
+                <button class="mode-btn" data-mode="blocks">
+                    <span class="icon">🧱</span>
+                    <span class="label">Blocks</span>
+                </button>
+                <button class="mode-btn" data-mode="split">
+                    <span class="icon">🔄</span>
+                    <span class="label">Split View</span>
+                </button>
+            </div>
+            
+            <div class="editor-tools">
+                <button id="saveBtn" class="tool-btn success">
+                    <span class="icon">💾</span>
+                    Сохранить
+                </button>
+                <button id="exportBtn" class="tool-btn">
+                    <span class="icon">📥</span>
+                    Экспорт
+                </button>
+                <button id="importBtn" class="tool-btn">
+                    <span class="icon">📤</span>
+                    Импорт
+                </button>
+                <div class="format-info">
+                    Текущий формат: <span id="currentFormat">markdown</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контейнеры редакторов -->
+        <div class="editor-container">
+            <!-- Toast UI Editor (Markdown/WYSIWYG) -->
+            <div id="toastui-editor" class="editor-view active"></div>
+            
+            <!-- Monaco Editor (Code) -->
+            <div id="monaco-editor" class="editor-view"></div>
+            
+            <!-- Editor.js (Blocks) -->
+            <div id="editorjs-container" class="editor-view"></div>
+            
+            <!-- Split View -->
+            <div id="split-view" class="editor-view split-view">
+                <div class="split-pane code-pane">
+                    <div id="split-monaco"></div>
+                </div>
+                <div class="split-pane preview-pane">
+                    <div id="split-preview"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статус бар -->
+        <div class="status-bar">
+            <div class="status-info">
+                <span id="charCount">0</span> символов • 
+                <span id="wordCount">0</span> слов •
+                Режим: <span id="currentMode">markdown</span>
+            </div>
+            <div class="sync-status">
+                <span id="syncStatus">⚪ Не синхронизировано</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключаем библиотеки -->
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.33.0/min/vs/loader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/code@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script>
+
+    <!-- Наши скрипты -->
+    <script src="scripts/format-converter.js"></script>
+    <script src="scripts/mode-manager.js"></script>
+    <script src="scripts/plugin-loader.js"></script>
+    <script src="scripts/editor-core.js"></script>
+</body>
+</html>
