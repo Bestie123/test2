@@ -1,0 +1,279 @@
+/* styles/universal-editor-integration.css */
+
+/* Стили для модального окна универсального редактора */
+.universal-editor-modal {
+    z-index: 10000 !important;
+}
+
+.universal-editor-modal .modal-content {
+    padding: 0 !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    width: 95% !important;
+    height: 90vh !important;
+    max-width: 1400px !important;
+    margin: 5vh auto !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.universal-editor-modal .modal-header {
+    padding: 15px 20px !important;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 !important;
+}
+
+.universal-editor-modal .modal-header h3 {
+    margin: 0 !important;
+    font-size: 1.3em;
+    color: #2c3e50;
+}
+
+.universal-editor-modal .modal-header button {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #6c757d;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.universal-editor-modal .modal-header button:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.editor-container-wrapper {
+    flex: 1;
+    min-height: 0; /* Важно для flexbox */
+    position: relative;
+}
+
+/* Адаптация универсального редактора для модального окна */
+#universal-editor-instance .universal-editor {
+    height: 100% !important;
+    border-radius: 0 !important;
+}
+
+#universal-editor-instance .editor-control-panel {
+    border-radius: 0 !important;
+    padding: 10px 20px !important;
+}
+
+#universal-editor-instance .editor-container {
+    border-radius: 0 !important;
+}
+
+#universal-editor-instance .status-bar {
+    border-radius: 0 !important;
+}
+
+/* Модальные действия */
+.modal-actions {
+    background: white;
+    border-top: 1px solid #e9ecef;
+}
+
+.modal-actions button {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.modal-actions button.success {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.modal-actions button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .universal-editor-modal .modal-content {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+    }
+    
+    .universal-editor-modal .editor-control-panel {
+        padding: 8px 10px !important;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .universal-editor-modal .mode-selector {
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 5px;
+    }
+    
+    .universal-editor-modal .editor-tools {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+    
+    .modal-actions > div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+/* Поддержка темной темы */
+@media (prefers-color-scheme: dark) {
+    .universal-editor-modal .modal-content {
+        background: #1e1e1e;
+        color: #ffffff;
+    }
+    
+    .universal-editor-modal .modal-header {
+        background: #2d2d30;
+        border-color: #3e3e42;
+        color: #ffffff;
+    }
+    
+    .universal-editor-modal .modal-header h3 {
+        color: #ffffff;
+    }
+    
+    .modal-actions {
+        background: #2d2d30;
+        border-color: #3e3e42;
+    }
+    
+    .modal-actions button {
+        background: #3e3e42;
+        border-color: #4e4e52;
+        color: #ffffff;
+    }
+    
+    .modal-actions button.success {
+        background: #28a745;
+        border-color: #28a745;
+    }
+}
+
+/* Анимации */
+.universal-editor-modal .modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Совместимость с существующим редактором */
+#knowledgeModal {
+    z-index: 1000;
+}
+
+.universal-editor-modal {
+    z-index: 1001;
+}
+
+/* Улучшения для редакторов внутри модального окна */
+#universal-editor-instance .toastui-editor-defaultUI {
+    border: none !important;
+}
+
+#universal-editor-instance .monaco-editor {
+    border: none !important;
+}
+
+#universal-editor-instance .codex-editor {
+    border: none !important;
+}
+
+/* Loading states для модального окна */
+.universal-editor-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    color: #6c757d;
+    font-size: 16px;
+}
+
+.universal-editor-loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Уведомления внутри модального окна */
+.universal-editor-notification {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1002;
+    animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.universal-editor-notification.success {
+    background: #28a745;
+}
+
+.universal-editor-notification.error {
+    background: #dc3545;
+}
+
+/* Исправления для Split View в модальном окне */
+#universal-editor-instance .split-view {
+    height: 100% !important;
+}
+
+#universal-editor-instance .split-pane {
+    height: 100% !important;
+}
+
+#universal-editor-instance #split-preview {
+    padding: 20px;
+    overflow-y: auto;
+    height: 100% !important;
+}
