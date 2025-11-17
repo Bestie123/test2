@@ -129,5 +129,19 @@
 
 <!-- Дополнительные CSS -->
 <link rel="stylesheet" href="styles/universal-editor-integration.css">
+<!-- Подключение -->
+<link rel="stylesheet" href="styles/unified-editor.css">
+<script src="scripts/unified-editor.js"></script>
+<script src="scripts/unified-integration.js"></script>
+
+<!-- Или быстрая интеграция -->
+<div id="editor-container" style="height: 600px;"></div>
+<script>
+// Простое использование
+const editor = new UnifiedEditor('editor-container', {
+    initialContent: '# Ваш контент здесь',
+    autoSave: true
+});
+</script>
 </body>
 </html>
